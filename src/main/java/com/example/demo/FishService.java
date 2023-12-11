@@ -20,18 +20,20 @@ public class FishService {
 
   public Fish createFish(Fish fish) {
     // 作成ロジックを実装
-    return fishMapper.save(fish);
+    fishMapper.save(fish);
+    return fish; // 修正: 挿入後のFishオブジェクトを返す
   }
 
   public Fish getFishById(Long id) {
     // IDを使用してFishを取得するロジックを実装
-    return fishMapper.findById(id).orElse(null);
+    Fish fish = fishMapper.findById(id).orElse(new Fish("魚がいません", "")); // 引数を受け取るコンストラクタを使用
+    return fish;
   }
 
   public Fish updateFish(Long id, Fish fish) {
     // IDを使用してFishを更新するロジックを実装
-    // 更新後のFishオブジェクトを返す
-    return fishMapper.save(fish);
+    fishMapper.update(fish);
+    return fish; // 修正: 更新後のFishオブジェクトを返す
   }
 
   public void deleteFish(Long id) {

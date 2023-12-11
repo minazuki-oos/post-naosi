@@ -13,7 +13,7 @@ public interface FishMapper {
 
   @Insert("INSERT INTO fish (name, color) VALUES (#{name}, #{color})")
   @Options(useGeneratedKeys = true, keyProperty = "id")
-  Fish save(Fish fish);
+  int save(Fish fish); // 修正: 戻り値をint型に変更
 
   @Select("SELECT * FROM fish WHERE id = #{id}")
   Optional<Fish> findById(Long id);
